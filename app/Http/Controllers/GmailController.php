@@ -9,22 +9,22 @@ use Google\Client;
 class GmailController extends Controller
 {
     private $accessToken = [];
-
     public function __construct()
     {
         $this->generateAccessToken();
-        if (\Storage::disk('local')->exists('gmail/tokens/credentials.json')) {
-            $this->accessToken = json_decode(\Storage::disk('local')->get('gmail/tokens/credentials.json'), true);
-        }
     }
 
     public function generateAccessToken()
     {
         try {
+            if (\Storage::disk('local')->exists(config('gmail.client_credentials_path'))) {
+                $this->accessToken = json_decode(\Storage::disk('local')->get(config('gmail.client_credentials_path')), true);
+            }
             $client = new Client();
             $client->setApplicationName('Gmail API PHP Quickstart');
             $client->setScopes(config('gmail.additional_scopes'));
-            $client->setAuthConfig(storage_path('app/gmail/tokens/clientCredentials.json'));
+            // $client->setAuthConfig(storage_path('app/gmail/tokens/clientSecret.json'));
+            $client->setAuthConfig(storage_path('app') . '/' . config('gmail.client_secret_path'));
             $client->setAccessType('offline');
             $client->setPrompt('select_account consent');
             $client->setAccessToken($this->accessToken);
@@ -42,10 +42,11 @@ class GmailController extends Controller
                     ]);
                 }
                 // Save the token to a file.
-                if (!file_exists(dirname(\Storage::disk('local')->exists('gmail/tokens/credentials.json')))) {
-                    mkdir(dirname(\Storage::disk('local')->exists('gmail/tokens/credentials.json')), 0700, true);
+                if (!file_exists(dirname(\Storage::disk('local')->exists(config('gmail.client_credentials_path'))))) {
+                    mkdir(dirname(\Storage::disk('local')->exists(config('gmail.client_credentials_path'))), 0700, true);
                 }
-                \Storage::disk('local')->put('gmail/tokens/credentials.json', json_encode($client->getAccessToken()));
+                \Storage::disk('local')->put(config('gmail.client_credentials_path'), json_encode($client->getAccessToken()));
+                $this->accessToken = json_decode(\Storage::disk('local')->get(config('gmail.client_credentials_path')), true);
             }
             return response()->json([
                 'statusCode' => 'TXN',
@@ -56,6 +57,7 @@ class GmailController extends Controller
             return response()->json([
                 'statusCode' => 'ERR',
                 'status' => $e->getMessage(),
+                'data' => $e->getTraceAsString(),
             ]);
         }
     }
@@ -214,7 +216,6 @@ class GmailController extends Controller
 
     public function reply()
     {
-        $this->generateAccessToken();
         $validator = \Validator::make(request()->all(), [
             'id' => 'required',
             'threadId' => 'required',
@@ -238,13 +239,18 @@ class GmailController extends Controller
             }
             $service = new \Google_Service_Gmail($client);
             $token = $this->accessToken['access_token'];
-            $httpCall = \Http::withHeaders(
-                [
-                    'Authorization' => 'Bearer ' . $token,
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                ]
-            )->get('https://www.googleapis.com/gmail/v1/users/me/messages/' . $vadatedData['id'] . '?format=metadata&metadataHeaders=In-Reply-To&metadataHeaders=References&metadataHeaders=Message-ID&metadataHeaders=Subject&metadataHeaders=From&fields=payload%2Fheaders');
+            $httpCall = \Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ])
+                ->get('https://www.googleapis.com/gmail/v1/users/me/messages/' . $vadatedData['id'] . '?format=metadata&metadataHeaders=In-Reply-To&metadataHeaders=References&metadataHeaders=Message-ID&metadataHeaders=Subject&metadataHeaders=From&fields=payload%2Fheaders');
+            if ($httpCall->failed()) {
+                return response()->json([
+                    'statusCode' => 'ERR',
+                    'status' => $httpCall->json()['error']['message'],
+                ]);
+            }
             $response = $httpCall->json();
             $collectResponse = collect($response['payload']['headers']);
             $messageId = $collectResponse->where('name', 'Message-ID')->first()['value'];
@@ -292,7 +298,6 @@ class GmailController extends Controller
 
     public function send()
     {
-        $this->generateAccessToken();
         $validator = \Validator::make(request()->all(), [
             'to' => 'required',
             'subject' => 'required',
@@ -353,7 +358,6 @@ class GmailController extends Controller
 
     public function allInboxEmails()
     {
-        $this->generateAccessToken();
         try {
             $client = new Client();
             $client->setAccessToken($this->accessToken);
@@ -368,7 +372,7 @@ class GmailController extends Controller
             $optParams = [
                 'maxResults' => 100,
                 'labelIds' => 'INBOX',
-                'includeSpamTrash' => false,
+                // 'includeSpamTrash' => false,
                 // 'q' => 'is:unread',
             ];
             $results = $service->users_messages->listUsersMessages($user, $optParams);

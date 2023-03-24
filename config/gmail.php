@@ -99,4 +99,6 @@ return [
      */
 
     'allow_json_encrypt' => env('GOOGLE_ALLOW_JSON_ENCRYPT', false),
+    'client_secret_path' => env('GOOGLE_CLIENT_SECRET_PATH', 'gmail/tokens/clientSecret.json'),
+    'client_credentials_path' => env('GOOGLE_CLIENT_CREDENTIALS_PATH', 'gmail/tokens/clientCredentials.json'),
 ];

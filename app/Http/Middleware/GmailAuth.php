@@ -7,21 +7,13 @@ use Dacastro4\LaravelGmail\Facade\LaravelGmail;
 
 class GmailAuth
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
     public function handle($request, Closure $next)
     {
         if (!LaravelGmail::check()) {
             return redirect()->route('oauth/gmail');
         }
-
         if (LaravelGmail::check()) {
-            $filePath = 'gmail/tokens/credentials.json';
+            $filePath = config('gmail.client_credentials_path');
             // if file does not exist then create file
             if (!\Storage::disk('local')->exists($filePath)) {
                 \Storage::disk('local')->put($filePath, '');
