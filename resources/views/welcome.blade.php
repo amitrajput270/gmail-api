@@ -73,9 +73,11 @@
             <a href="{{ url('/home') }}"> Home</a>
             @endif
             @if (LaravelGmail::check())
-            <a href="{{ url('oauth/gmail/logout') }}">logout</a>
+            <a href="{{ url('oauth/gmail/logout') }}"><i
+                    style="color:chocolate;">{{\Str::lower(LaravelGmail::user())}}</i> <b
+                    style="color:blue;">(logout)</b></a>
             @else
-            <a href="{{ url('oauth/gmail') }}">login</a>
+            <a href="{{ url('oauth/gmail') }}">Gmail Login</a>
             @endif
             @else
             <a href="{{ route('login') }}">Login</a>

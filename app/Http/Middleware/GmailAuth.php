@@ -21,7 +21,7 @@ class GmailAuth
         }
 
         if (LaravelGmail::check()) {
-            $filePath = 'gmail/tokens/credentials.json';
+            $filePath = 'gmail/tokens/clientCredentials.json';
             // if file does not exist then create file
             if (!\Storage::disk('local')->exists($filePath)) {
                 \Storage::disk('local')->put($filePath, '');

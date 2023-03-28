@@ -12,7 +12,7 @@ class GmailController extends Controller
 
     public function __construct()
     {
-        $this->generateAccessToken();
+        // $this->generateAccessToken();
         if (\Storage::disk('local')->exists('gmail/tokens/clientCredentials.json')) {
             $this->accessToken = json_decode(\Storage::disk('local')->get('gmail/tokens/clientCredentials.json'), true);
         }
