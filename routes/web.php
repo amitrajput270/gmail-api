@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GmailController;
 use App\Http\Controllers\HomeController;
+use Dacastro4\LaravelGmail\Facade\LaravelGmail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +39,7 @@ Route::get('oauth/gmail', function () {
 Route::get('oauth/gmail/callback', function () {
     LaravelGmail::makeToken();
     // save credentials to file
-    $filePath = 'gmail/tokens/credentials.json';
+    $filePath = 'gmail/tokens/clientCredentials.json';
     if (!\Storage::disk('local')->exists($filePath)) {
         \Storage::disk('local')->put($filePath, json_encode(LaravelGmail::getAccessToken()));
     }
@@ -47,7 +48,7 @@ Route::get('oauth/gmail/callback', function () {
 Route::get('oauth/gmail/logout', function () {
     LaravelGmail::logout(); //It returns exception if fails
     // delete credentials file
-    $filePath = 'gmail/tokens/credentials.json';
+    $filePath = 'gmail/tokens/clientCredentials.json';
     if (\Storage::disk('local')->exists($filePath)) {
         \Storage::disk('local')->delete($filePath);
     }

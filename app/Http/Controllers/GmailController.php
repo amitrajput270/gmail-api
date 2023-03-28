@@ -13,8 +13,8 @@ class GmailController extends Controller
     public function __construct()
     {
         $this->generateAccessToken();
-        if (\Storage::disk('local')->exists('gmail/tokens/credentials.json')) {
-            $this->accessToken = json_decode(\Storage::disk('local')->get('gmail/tokens/credentials.json'), true);
+        if (\Storage::disk('local')->exists('gmail/tokens/clientCredentials.json')) {
+            $this->accessToken = json_decode(\Storage::disk('local')->get('gmail/tokens/clientCredentials.json'), true);
         }
     }
 
@@ -24,7 +24,7 @@ class GmailController extends Controller
             $client = new Client();
             $client->setApplicationName('Gmail API PHP Quickstart');
             $client->setScopes(config('gmail.additional_scopes'));
-            $client->setAuthConfig(storage_path('app/gmail/tokens/clientCredentials.json'));
+            $client->setAuthConfig(storage_path('app/gmail/tokens/clientSecret.json'));
             $client->setAccessType('offline');
             $client->setPrompt('select_account consent');
             $client->setAccessToken($this->accessToken);
@@ -42,10 +42,10 @@ class GmailController extends Controller
                     ]);
                 }
                 // Save the token to a file.
-                if (!file_exists(dirname(\Storage::disk('local')->exists('gmail/tokens/credentials.json')))) {
-                    mkdir(dirname(\Storage::disk('local')->exists('gmail/tokens/credentials.json')), 0700, true);
+                if (!file_exists(dirname(\Storage::disk('local')->exists('gmail/tokens/clientCredentials.json')))) {
+                    mkdir(dirname(\Storage::disk('local')->exists('gmail/tokens/clientCredentials.json')), 0700, true);
                 }
-                \Storage::disk('local')->put('gmail/tokens/credentials.json', json_encode($client->getAccessToken()));
+                \Storage::disk('local')->put('gmail/tokens/clientCredentials.json', json_encode($client->getAccessToken()));
             }
             return response()->json([
                 'statusCode' => 'TXN',
@@ -56,6 +56,7 @@ class GmailController extends Controller
             return response()->json([
                 'statusCode' => 'ERR',
                 'status' => $e->getMessage(),
+                'data' => $e->getTraceAsString(),
             ]);
         }
     }
@@ -473,5 +474,50 @@ class GmailController extends Controller
                 'data' => $e->getTraceAsString(),
             ]);
         }
+    }
+
+    public function logout()
+    {
+        $this->generateAccessToken();
+        try {
+            $client = new Client();
+            $client->setAccessToken($this->accessToken);
+            if ($client->isAccessTokenExpired()) {
+                return response()->json([
+                    'statusCode' => 'ERR',
+                    'status' => 'Token expired',
+                ]);
+            }
+            $client->revokeToken();
+            return response()->json([
+                'statusCode' => 'TXN',
+                'status' => 'Logged out successfully',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'statusCode' => 'ERR',
+                'status' => $e->getMessage(),
+                'data' => $e->getTraceAsString(),
+            ]);
+        }
+    }
+
+    public function login()
+    {
+        $client = new Client();
+        $client->setAuthConfig(storage_path('app/gmail/tokens/clientSecret.json'));
+        $client->setRedirectUri('http: //127.0.0.1:8000/oauth/gmail/callback');
+        $client->addScope(\Google_Service_Gmail::GMAIL_READONLY);
+        $client->addScope(\Google_Service_Gmail::GMAIL_SEND);
+        $client->addScope(\Google_Service_Gmail::GMAIL_COMPOSE);
+        $client->addScope(\Google_Service_Gmail::GMAIL_MODIFY);
+        $client->addScope(\Google_Service_Gmail::GMAIL_LABELS);
+        $client->addScope(\Google_Service_Gmail::GMAIL_METADATA);
+        $client->addScope(\Google_Service_Gmail::GMAIL_SETTINGS_BASIC);
+        $client->addScope(\Google_Service_Gmail::GMAIL_SETTINGS_SHARING);
+        $client->setAccessType('offline');
+        $client->setApprovalPrompt('force');
+        $authUrl = $client->createAuthUrl();
+        return redirect($authUrl);
     }
 }
