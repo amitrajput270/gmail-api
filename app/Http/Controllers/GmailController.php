@@ -12,9 +12,8 @@ class GmailController extends Controller
 
     public function __construct()
     {
-        // $this->generateAccessToken();
-        if (\Storage::disk('local')->exists('gmail/tokens/clientCredentials.json')) {
-            $this->accessToken = json_decode(\Storage::disk('local')->get('gmail/tokens/clientCredentials.json'), true);
+        if (\Storage::disk('local')->exists(config('app.clientCredentialsPath'))) {
+            $this->accessToken = json_decode(\Storage::disk('local')->get(config('app.clientCredentialsPath')), true);
         }
     }
 
@@ -24,7 +23,7 @@ class GmailController extends Controller
             $client = new Client();
             $client->setApplicationName('Gmail API PHP Quickstart');
             $client->setScopes(config('gmail.additional_scopes'));
-            $client->setAuthConfig(storage_path('app/gmail/tokens/clientSecret.json'));
+            $client->setAuthConfig(storage_path('app') . '/' . config('app.clientSecretPath'));
             $client->setAccessType('offline');
             $client->setPrompt('select_account consent');
             $client->setAccessToken($this->accessToken);
@@ -42,10 +41,10 @@ class GmailController extends Controller
                     ]);
                 }
                 // Save the token to a file.
-                if (!file_exists(dirname(\Storage::disk('local')->exists('gmail/tokens/clientCredentials.json')))) {
-                    mkdir(dirname(\Storage::disk('local')->exists('gmail/tokens/clientCredentials.json')), 0700, true);
+                if (!file_exists(dirname(\Storage::disk('local')->exists(config('app.clientCredentialsPath'))))) {
+                    mkdir(dirname(\Storage::disk('local')->exists(config('app.clientCredentialsPath'))), 0700, true);
                 }
-                \Storage::disk('local')->put('gmail/tokens/clientCredentials.json', json_encode($client->getAccessToken()));
+                \Storage::disk('local')->put(config('app.clientCredentialsPath'), json_encode($client->getAccessToken()));
             }
             return response()->json([
                 'statusCode' => 'TXN',
@@ -215,7 +214,7 @@ class GmailController extends Controller
 
     public function reply()
     {
-        $this->generateAccessToken();
+        // $this->generateAccessToken();
         $validator = \Validator::make(request()->all(), [
             'id' => 'required',
             'threadId' => 'required',
@@ -274,7 +273,7 @@ class GmailController extends Controller
             $isMailed = $service->users_messages->send($user, $msg);
             return response()->json([
                 'statusCode' => 'TXN',
-                'status' => 'Reply sent successfully to ' . $sender,
+                'status' => 'Reply sent successfully with the sender ' . $sender,
                 'data' => [
                     'id' => $isMailed->getId(),
                     'threadId' => $isMailed->getThreadId(),
@@ -293,7 +292,7 @@ class GmailController extends Controller
 
     public function send()
     {
-        $this->generateAccessToken();
+        // $this->generateAccessToken();
         $validator = \Validator::make(request()->all(), [
             'to' => 'required',
             'subject' => 'required',
@@ -378,6 +377,9 @@ class GmailController extends Controller
             if (count($messages) > 0) {
                 foreach ($messages as $message) {
                     $msg = $service->users_messages->get($user, $message->id);
+                    // get body of message
+                    $getBody = $service->users_messages->get($user, $message->id, ['format' => 'full']);
+
                     $payload = $msg->getPayload();
                     $headers = $payload->getHeaders();
                     $from = '';
@@ -505,7 +507,7 @@ class GmailController extends Controller
     public function login()
     {
         $client = new Client();
-        $client->setAuthConfig(storage_path('app/gmail/tokens/clientSecret.json'));
+        $client->setAuthConfig(storage_path('app') . '/' . config('app.clientSecretPath'));
         $client->setRedirectUri('http: //127.0.0.1:8000/oauth/gmail/callback');
         $client->addScope(\Google_Service_Gmail::GMAIL_READONLY);
         $client->addScope(\Google_Service_Gmail::GMAIL_SEND);

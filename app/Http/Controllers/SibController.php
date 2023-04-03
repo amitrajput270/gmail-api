@@ -109,108 +109,103 @@ class SibController extends Controller
 
     public function calculateCtc()
     {
-        // Salary Calculation formula
-        // CTC =  228720
-        // monthlyctcAmount = CTC / 12 = 19060
-        // Basic salary = 50% of CTC
-        // HRA = 40% of BS
-        // LTA = 20% of BS
-        // Medical Allowances = 20% of BS or In the case of ESI the calculation will be in 10%
-        // Other Allowances = Adjustment =  CTC - (BS+HRA+LTA+MA)
-        // Gross Salary = BS + HRA+ LTA + MA + OA
-        // Inhand = GS-All deduction (Insurance + PF+ ESI + Food)
-        // Normal PF Calculation -
-        // PF = 12% of BS
-        // EPF+Admin = 13% of BS (12% + 1%)
-        // Fixed PF - All calculations will be from 15000
-        // PF = 12%
-        // EPF+Admin = 13%(12% + 1%)
-        // ESI
-        // IF the gross salary will be <= 21000, then the calculation will be
-        // Employee ESI - 0.75% of GS
-        // Employer ESI - 3.25% of GS
-        // Food = 1000 fixed
-
-        $annualCtcAmount = request('ctcamount');
-        $salaryType = request('salaryType');
-        $monthlyctcAmount = round($annualCtcAmount / 12, 2);
-        $bascisalary = round($monthlyctcAmount * 0.5, 2, PHP_ROUND_HALF_UP); // basic salary (50% of CTC
-        if ($bascisalary < 9530) {
-            $bascisalary = 9530;
+        $annualCtc = request('ctcamount');
+        $monthlyCtc = $annualCtc / 12;
+        $basic = $monthlyCtc * 0.5; // 50% of monthly ctc
+        $hra = $basic * 0.4; // 40% of basic
+        $lta = $basic * 0.2; // 20% of basic
+        $ma = $basic * 0.2; // 20% of basic
+        $foodCoupon = 1000; // 1000 per month
+        if (request('foodCoupon') && request('foodCoupon') >= 500 && request('foodCoupon') <= 1000) {
+            $foodCoupon = request('foodCoupon');
         }
-        $hra = round($bascisalary * 0.4, 2, PHP_ROUND_HALF_DOWN); // house rent allowance
-        $ltAllowance = $bascisalary * 0.2; // leave travel allowance
-        $medicalAllowance = $bascisalary * 0.2;
-        $otherAllowance = null;
-        $grossSalary = $bascisalary + $hra + $ltAllowance + $medicalAllowance + $otherAllowance;
-        $pfAndAdminCharges = $bascisalary * 0.13; // public fund
-        $esi1 = $grossSalary * 0.0325; // employee state insurance
-        $esi1 = $annualCtcAmount > '280000' ? 0 : $esi1;
+        $healthInsurance = 281; // 281 per month
+        $healthInsuranceMembers = request('healthInsuranceMembers') && request('healthInsuranceMembers') > 1 ? request('healthInsuranceMembers') : 1;
+        $healthInsurance = $healthInsurance * $healthInsuranceMembers;
+        $esi1 = 0;
         $esi2 = 0;
-        $foodVoucher = 1000;
-        if ($salaryType == 'basic') {
-            //Employer Contribution 13%
-            $pf = $bascisalary * 0.12; // public fund
-            // Employer Contribution 0.75%
-            $esi2 = $grossSalary * 0.0075; // employee state insurance
-            $esi2 = round($annualCtcAmount > '280000' ? 0 : $esi2, 2, PHP_ROUND_HALF_UP);
-        } elseif ($salaryType == 'fixed') {
-            $fixed = 15000;
-            $pf = $fixed * 0.12; // public fund
-            $pfAndAdminCharges = $fixed * 0.13; // public fund
-            $esi2 = $fixed * 0.0075; // employee state insurance
-        } elseif ($salaryType == 'nopf') {
-            $pf = 0; // public fund
-            $pfAndAdminCharges = 0;
-        } else {
-            $pf = $bascisalary * 0.12; // public fund
-        }
-        $costtoCompany = number_format(round($grossSalary + $pfAndAdminCharges + $esi1, 2, PHP_ROUND_HALF_DOWN), 2, '.', '');
-
-        if ($costtoCompany + $foodVoucher > $monthlyctcAmount) {
-            $foodVoucher = 500;
-            $costtoCompany += $foodVoucher;
-            if ($costtoCompany > $monthlyctcAmount) {
-                $foodVoucher = 0;
-                $costtoCompany -= 500;
+        if ((int) $basic <= 9530) {
+            // $annualCtc = 9530 * 12;
+            $monthlyCtc = 9530 * 2;
+            $basic = 9530;
+            $hra = 0;
+            $lta = 0;
+            $ma = 0;
+            $epf = $basic * 0.12; // 12% of basic
+            $adminCharges = $basic * 0.01; // 1% of basic
+            $otherAllowances = $monthlyCtc - ($basic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
+            $grossSalary = $basic + $hra + $lta + $ma + $otherAllowances;
+            // Deductions
+            $pf = 0;
+            $esi1 = $grossSalary * 0.0325; // 1.75% of gross salary
+        } elseif ((int) $annualCtc <= 291225) {
+            $monthlyCtc = $annualCtc / 12;
+            $basic = $monthlyCtc * 0.5; // 50% of monthly ctc
+            $hra = $basic * 0.4; // 40% of basic
+            $lta = $basic * 0.2; // 20% of basic
+            $ma = 0;
+            $epf = $basic * 0.12; // 12% of basic
+            $adminCharges = $basic * 0.01; // 1% of basic
+            $otherAllowances = $monthlyCtc - ($basic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
+            $grossSalary = $basic + $hra + $lta + $ma + $otherAllowances;
+            $healthInsurance = 0;
+            if ((int) $grossSalary < 21000) {
+                $esi1 = $grossSalary * 0.0325; // 3.25% of gross salary
+                $esi2 = $grossSalary * 0.0075; // 0.75% of gross salary
+            } else {
+                $esi1 = 0;
+                $esi2 = 0;
             }
-        } else {
-            $costtoCompany += $foodVoucher;
+            // Deductions
+            $pf = $basic * 0.12; // 12% of basic
+        } elseif (request('salaryRule') == 'fixed') {
+            $changeBasic = 15000;
+            $epf = $changeBasic * 0.12; // 12% of basic
+            $adminCharges = $changeBasic * 0.01; // 1% of basic
+            $otherAllowances = $monthlyCtc - ($changeBasic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
+            $grossSalary = $changeBasic + $hra + $lta + $ma + $otherAllowances;
+            // Deductions
+            $pf = $changeBasic * 0.12; // 12% of basic
+        } elseif (request('salaryRule') == 'basic') {
+            $epf = $basic * 0.12; // 12% of basic
+            $adminCharges = $basic * 0.01; // 1% of basic
+            $otherAllowances = $monthlyCtc - ($basic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
+            $grossSalary = $basic + $hra + $lta + $ma + $otherAllowances;
+            // Deductions
+            $pf = $basic * 0.12; // 12% of basic
+        } elseif (request('salaryRule') == 'nopf') {
+            $epf = 0;
+            $adminCharges = 0;
+            $otherAllowances = $monthlyCtc - ($basic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
+            $grossSalary = $basic + $hra + $lta + $ma + $otherAllowances;
+            // Deductions
+            $pf = 0;
         }
-        $otherAllowance = round($monthlyctcAmount - $costtoCompany, 2, PHP_ROUND_HALF_DOWN);
-        // dd($monthlyctcAmount, $costtoCompany, $monthlyctcAmount - $costtoCompany, $otherAllowance);
-        $costtoCompany = $costtoCompany + $otherAllowance;
-        $healthInsurance = 0;
-        $totalDeduction = $pfAndAdminCharges + $esi1 + $pf + $esi2 + $healthInsurance + $foodVoucher;
-        $netSalary = round($grossSalary - ($pf + $esi2), 2, PHP_ROUND_HALF_DOWN);
+        $costToCompany = $grossSalary + $epf + $adminCharges + $foodCoupon;
+        $netSalary = $grossSalary - ($pf + $healthInsurance);
+        $totalDeductions = $pf + $healthInsurance + $esi1 + $esi2;
         return response()->json([
             'statusCode' => 'TXN',
+            'status' => 'CTC calculated successfully.',
             'data' => [
-                'annualCtcAmount' => $annualCtcAmount,
-                'monthlyctcAmount' => $monthlyctcAmount,
-                'bascisalary' => $bascisalary . '(' . number_format(round($bascisalary * 12, 2, PHP_ROUND_HALF_DOWN), 2, '.', '') . ')',
-                'hra' => $hra . '(' . number_format(round($hra * 12, 2, PHP_ROUND_HALF_DOWN), 2, '.', '') . ')',
-                'ltAllowance' => $ltAllowance . '(' . number_format(round($ltAllowance * 12, 2, PHP_ROUND_HALF_DOWN), 2, '.', '') . ')',
-                'medicalAllowance' => $medicalAllowance . '(' . number_format(round($medicalAllowance * 12, 2, PHP_ROUND_HALF_DOWN), 2, '.', '') . ')',
-                'otherAllowance' => $otherAllowance,
-                'grossSalary' => $grossSalary . '(' . number_format(round($grossSalary * 12, 2, PHP_ROUND_HALF_DOWN), 2, '.', '') . ')',
-                'pfAndAdminCharges' => $pfAndAdminCharges . '(' . number_format(round($pfAndAdminCharges * 12, 2, PHP_ROUND_HALF_DOWN), 2, '.', '') . ')',
-                'esi1' => round($esi1, 2, PHP_ROUND_HALF_EVEN) . '(' . number_format($esi1 * 12, 2, '.', '') . ')',
-                'pf' => $pf . '(' . number_format(round($pf * 12, 2, PHP_ROUND_HALF_DOWN), 2, '.', '') . ')',
-                'esi2' => $esi2 . '(' . number_format($esi2 * 12, 2, '.', '') . ')',
-                'foodVoucher' => $foodVoucher,
-                'costtoCompany' => $costtoCompany . '(' . number_format(round($costtoCompany * 12, 0, PHP_ROUND_HALF_DOWN), 2, '.', '') . ')',
-                'healthInsurance' => $healthInsurance,
-                'totalDeduction' => [
-                    'pfAndAdminCharges' => $pfAndAdminCharges,
-                    'esi1' => $esi1,
-                    'pf' => $pf,
-                    'esi2' => $esi2,
-                    'healthInsurance' => $healthInsurance,
-                    'foodVoucher' => $foodVoucher,
-                    'totalDeduction' => $totalDeduction,
-                ],
-                'netSalary' => $netSalary . '(' . number_format(round($netSalary * 12, 0, PHP_ROUND_HALF_DOWN), 2, '.', '') . ')',
+                'annualCtc' => round($annualCtc, 2),
+                'monthlyCtc' => round($monthlyCtc, 2),
+                'basic' => round($basic, 2),
+                'hra' => round($hra, 2),
+                'lta' => round($lta, 2),
+                'ma' => round($ma, 2),
+                'epf' => round($epf, 2),
+                'esi1' => round($esi1, 2),
+                'adminCharges' => round($adminCharges, 2),
+                'foodCoupon' => round($foodCoupon, 2),
+                'otherAllowances' => round($otherAllowances, 2),
+                'grossSalary' => round($grossSalary, 2),
+                'pf' => round($pf, 2),
+                'esi2' => round($esi2, 2),
+                'healthInsurance' => round($healthInsurance, 2),
+                'costToCompany' => round($costToCompany, 2),
+                // 'totalDeductions' => round($totalDeductions,2),
+                'netSalary' => round($netSalary, 2),
             ],
         ]);
     }

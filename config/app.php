@@ -2,6 +2,10 @@
 
 return [
 
+    'clientCredentialsPath' => 'gmail/tokens/clientCredentials.json',
+
+    'clientSecretPath' => 'gmail/tokens/clientSecret.json',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
