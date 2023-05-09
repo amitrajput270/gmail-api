@@ -12,6 +12,7 @@ class GmailController extends Controller
 
     public function __construct()
     {
+        // $this->middleware('gmailAuth');
         if (\Storage::disk('local')->exists(config('app.clientCredentialsPath'))) {
             $this->accessToken = json_decode(\Storage::disk('local')->get(config('app.clientCredentialsPath')), true);
         }
@@ -432,18 +433,21 @@ class GmailController extends Controller
                                     $data = strtr($data, ['-' => '+', '_' => '/']);
                                     $decodedData = base64_decode($data);
                                     $path = public_path('storage/attachments/gmail/' . $message->id);
-                                    if (!file_exists($path)) {
-                                        mkdir($path, 0777, true);
+                                    if (!\File::exists($path)) {
+                                        \File::makeDirectory($path, 0700, true);
                                     }
                                     $file = $path . '/' . $filename;
                                     $fp = fopen($file, "w+");
                                     fwrite($fp, $decodedData);
                                     fclose($fp);
+                                    //file_put_contents($path . '/' . $filename, $decodedData);
+
                                 }
                                 $attachments[] = [
                                     'filename' => $filename,
                                     'fileType' => $fileType,
                                     'fileSize' => round($fileSize / 1024, 2) . ' KB',
+                                    'fileUrl' => url('storage/attachments/gmail/' . $message->id . '/' . $filename),
                                 ];
                             }
                         }

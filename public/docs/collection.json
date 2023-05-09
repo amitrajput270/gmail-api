@@ -1,0 +1,577 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "localhost"
+        }
+    ],
+    "info": {
+        "name": "Gmail Wrapper",
+        "_postman_id": "e577b1dc-6d89-4cb9-ac56-555beaad7f86",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "api\/user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/user",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/user"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "api\/user Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/user",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/user"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/gmail\/reply",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gmail\/reply",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/reply"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "api\/gmail\/reply Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/gmail\/reply",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/reply"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"statusCode\": \"ERR\",\n    \"status\": \"The id field is required.\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/gmail\/send",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gmail\/send",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/send"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "api\/gmail\/send Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/gmail\/send",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/send"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"statusCode\": \"ERR\",\n    \"status\": \"The to field is required.\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/gmail\/allInboxEmails",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gmail\/allInboxEmails",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/allInboxEmails"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "api\/gmail\/allInboxEmails Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/gmail\/allInboxEmails",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/allInboxEmails"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"statusCode\": \"ERR\",\n    \"status\": \"invalid json token\",\n    \"data\": \"#0 \\\/var\\\/www\\\/gmailWrapper\\\/app\\\/Http\\\/Controllers\\\/GmailController.php(360): Google\\\\Client->setAccessToken(Array)\\n#1 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Controller.php(54): App\\\\Http\\\\Controllers\\\\GmailController->allInboxEmails()\\n#2 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/ControllerDispatcher.php(45): Illuminate\\\\Routing\\\\Controller->callAction('allInboxEmails', Array)\\n#3 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Route.php(239): Illuminate\\\\Routing\\\\ControllerDispatcher->dispatch(Object(Illuminate\\\\Routing\\\\Route), Object(App\\\\Http\\\\Controllers\\\\GmailController), 'allInboxEmails')\\n#4 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Route.php(196): Illuminate\\\\Routing\\\\Route->runController()\\n#5 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(685): Illuminate\\\\Routing\\\\Route->run()\\n#6 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(128): Illuminate\\\\Routing\\\\Router->Illuminate\\\\Routing\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#7 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Middleware\\\/SubstituteBindings.php(41): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#8 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#9 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Middleware\\\/ThrottleRequests.php(59): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#10 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure), 60, '1')\\n#11 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(103): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#12 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(687): Illuminate\\\\Pipeline\\\\Pipeline->then(Object(Closure))\\n#13 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(662): Illuminate\\\\Routing\\\\Router->runRouteWithinStack(Object(Illuminate\\\\Routing\\\\Route), Object(Illuminate\\\\Http\\\\Request))\\n#14 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(628): Illuminate\\\\Routing\\\\Router->runRoute(Object(Illuminate\\\\Http\\\\Request), Object(Illuminate\\\\Routing\\\\Route))\\n#15 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(617): Illuminate\\\\Routing\\\\Router->dispatchToRoute(Object(Illuminate\\\\Http\\\\Request))\\n#16 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Kernel.php(165): Illuminate\\\\Routing\\\\Router->dispatch(Object(Illuminate\\\\Http\\\\Request))\\n#17 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(128): Illuminate\\\\Foundation\\\\Http\\\\Kernel->Illuminate\\\\Foundation\\\\Http\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#18 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Middleware\\\/TransformsRequest.php(21): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#19 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#20 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Middleware\\\/TransformsRequest.php(21): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#21 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#22 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Middleware\\\/ValidatePostSize.php(27): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#23 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#24 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Middleware\\\/CheckForMaintenanceMode.php(63): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#25 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\CheckForMaintenanceMode->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#26 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/fruitcake\\\/laravel-cors\\\/src\\\/HandleCors.php(52): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#27 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Fruitcake\\\\Cors\\\\HandleCors->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#28 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/fideloper\\\/proxy\\\/src\\\/TrustProxies.php(57): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#29 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Fideloper\\\\Proxy\\\\TrustProxies->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#30 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(103): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#31 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Kernel.php(140): Illuminate\\\\Pipeline\\\\Pipeline->then(Object(Closure))\\n#32 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Kernel.php(109): Illuminate\\\\Foundation\\\\Http\\\\Kernel->sendRequestThroughRouter(Object(Illuminate\\\\Http\\\\Request))\\n#33 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(324): Illuminate\\\\Foundation\\\\Http\\\\Kernel->handle(Object(Illuminate\\\\Http\\\\Request))\\n#34 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(305): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->callLaravelOrLumenRoute(Object(Illuminate\\\\Http\\\\Request))\\n#35 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(76): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->makeApiCall(Object(Illuminate\\\\Http\\\\Request), Object(Illuminate\\\\Routing\\\\Route))\\n#36 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(51): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->makeResponseCall(Object(Illuminate\\\\Routing\\\\Route), Array, Array)\\n#37 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(41): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->makeResponseCallIfEnabledAndNoSuccessResponses(Object(Illuminate\\\\Routing\\\\Route), Array, Array)\\n#38 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Generator.php(236): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->__invoke(Object(Illuminate\\\\Routing\\\\Route), Object(ReflectionClass), Object(ReflectionMethod), Array, Array)\\n#39 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Generator.php(172): Knuckles\\\\Scribe\\\\Extracting\\\\Generator->iterateThroughStrategies('responses', Array, Array)\\n#40 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Generator.php(127): Knuckles\\\\Scribe\\\\Extracting\\\\Generator->fetchResponses(Object(ReflectionClass), Object(ReflectionMethod), Object(Illuminate\\\\Routing\\\\Route), Array, Array)\\n#41 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Commands\\\/GenerateDocumentation.php(119): Knuckles\\\\Scribe\\\\Extracting\\\\Generator->processRoute(Object(Illuminate\\\\Routing\\\\Route), Array)\\n#42 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Commands\\\/GenerateDocumentation.php(73): Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation->processRoutes(Array)\\n#43 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/BoundMethod.php(36): Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation->handle(Object(Knuckles\\\\Scribe\\\\Matching\\\\RouteMatcher))\\n#44 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/Util.php(37): Illuminate\\\\Container\\\\BoundMethod::Illuminate\\\\Container\\\\{closure}()\\n#45 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/BoundMethod.php(93): Illuminate\\\\Container\\\\Util::unwrapIfClosure(Object(Closure))\\n#46 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/BoundMethod.php(37): Illuminate\\\\Container\\\\BoundMethod::callBoundMethod(Object(Illuminate\\\\Foundation\\\\Application), Array, Object(Closure))\\n#47 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/Container.php(596): Illuminate\\\\Container\\\\BoundMethod::call(Object(Illuminate\\\\Foundation\\\\Application), Array, Array, NULL)\\n#48 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Console\\\/Command.php(134): Illuminate\\\\Container\\\\Container->call(Array)\\n#49 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/symfony\\\/console\\\/Command\\\/Command.php(298): Illuminate\\\\Console\\\\Command->execute(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Illuminate\\\\Console\\\\OutputStyle))\\n#50 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Console\\\/Command.php(121): Symfony\\\\Component\\\\Console\\\\Command\\\\Command->run(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Illuminate\\\\Console\\\\OutputStyle))\\n#51 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/symfony\\\/console\\\/Application.php(1040): Illuminate\\\\Console\\\\Command->run(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#52 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/symfony\\\/console\\\/Application.php(301): Symfony\\\\Component\\\\Console\\\\Application->doRunCommand(Object(Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation), Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#53 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/symfony\\\/console\\\/Application.php(171): Symfony\\\\Component\\\\Console\\\\Application->doRun(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#54 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Console\\\/Application.php(93): Symfony\\\\Component\\\\Console\\\\Application->run(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#55 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Console\\\/Kernel.php(129): Illuminate\\\\Console\\\\Application->run(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#56 \\\/var\\\/www\\\/gmailWrapper\\\/artisan(37): Illuminate\\\\Foundation\\\\Console\\\\Kernel->handle(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#57 {main}\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/gmail\/logout",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gmail\/logout",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/logout"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "api\/gmail\/logout Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/gmail\/logout",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/logout"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"statusCode\": \"ERR\",\n    \"status\": \"invalid json token\",\n    \"data\": \"#0 \\\/var\\\/www\\\/gmailWrapper\\\/app\\\/Http\\\/Controllers\\\/GmailController.php(490): Google\\\\Client->setAccessToken(Array)\\n#1 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Controller.php(54): App\\\\Http\\\\Controllers\\\\GmailController->logout()\\n#2 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/ControllerDispatcher.php(45): Illuminate\\\\Routing\\\\Controller->callAction('logout', Array)\\n#3 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Route.php(239): Illuminate\\\\Routing\\\\ControllerDispatcher->dispatch(Object(Illuminate\\\\Routing\\\\Route), Object(App\\\\Http\\\\Controllers\\\\GmailController), 'logout')\\n#4 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Route.php(196): Illuminate\\\\Routing\\\\Route->runController()\\n#5 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(685): Illuminate\\\\Routing\\\\Route->run()\\n#6 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(128): Illuminate\\\\Routing\\\\Router->Illuminate\\\\Routing\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#7 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Middleware\\\/SubstituteBindings.php(41): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#8 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#9 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Middleware\\\/ThrottleRequests.php(59): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#10 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure), 60, '1')\\n#11 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(103): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#12 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(687): Illuminate\\\\Pipeline\\\\Pipeline->then(Object(Closure))\\n#13 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(662): Illuminate\\\\Routing\\\\Router->runRouteWithinStack(Object(Illuminate\\\\Routing\\\\Route), Object(Illuminate\\\\Http\\\\Request))\\n#14 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(628): Illuminate\\\\Routing\\\\Router->runRoute(Object(Illuminate\\\\Http\\\\Request), Object(Illuminate\\\\Routing\\\\Route))\\n#15 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Routing\\\/Router.php(617): Illuminate\\\\Routing\\\\Router->dispatchToRoute(Object(Illuminate\\\\Http\\\\Request))\\n#16 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Kernel.php(165): Illuminate\\\\Routing\\\\Router->dispatch(Object(Illuminate\\\\Http\\\\Request))\\n#17 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(128): Illuminate\\\\Foundation\\\\Http\\\\Kernel->Illuminate\\\\Foundation\\\\Http\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#18 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Middleware\\\/TransformsRequest.php(21): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#19 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#20 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Middleware\\\/TransformsRequest.php(21): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#21 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#22 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Middleware\\\/ValidatePostSize.php(27): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#23 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#24 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Middleware\\\/CheckForMaintenanceMode.php(63): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#25 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\CheckForMaintenanceMode->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#26 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/fruitcake\\\/laravel-cors\\\/src\\\/HandleCors.php(52): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#27 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Fruitcake\\\\Cors\\\\HandleCors->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#28 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/fideloper\\\/proxy\\\/src\\\/TrustProxies.php(57): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#29 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(167): Fideloper\\\\Proxy\\\\TrustProxies->handle(Object(Illuminate\\\\Http\\\\Request), Object(Closure))\\n#30 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Pipeline\\\/Pipeline.php(103): Illuminate\\\\Pipeline\\\\Pipeline->Illuminate\\\\Pipeline\\\\{closure}(Object(Illuminate\\\\Http\\\\Request))\\n#31 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Kernel.php(140): Illuminate\\\\Pipeline\\\\Pipeline->then(Object(Closure))\\n#32 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Http\\\/Kernel.php(109): Illuminate\\\\Foundation\\\\Http\\\\Kernel->sendRequestThroughRouter(Object(Illuminate\\\\Http\\\\Request))\\n#33 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(324): Illuminate\\\\Foundation\\\\Http\\\\Kernel->handle(Object(Illuminate\\\\Http\\\\Request))\\n#34 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(305): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->callLaravelOrLumenRoute(Object(Illuminate\\\\Http\\\\Request))\\n#35 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(76): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->makeApiCall(Object(Illuminate\\\\Http\\\\Request), Object(Illuminate\\\\Routing\\\\Route))\\n#36 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(51): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->makeResponseCall(Object(Illuminate\\\\Routing\\\\Route), Array, Array)\\n#37 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Strategies\\\/Responses\\\/ResponseCalls.php(41): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->makeResponseCallIfEnabledAndNoSuccessResponses(Object(Illuminate\\\\Routing\\\\Route), Array, Array)\\n#38 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Generator.php(236): Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls->__invoke(Object(Illuminate\\\\Routing\\\\Route), Object(ReflectionClass), Object(ReflectionMethod), Array, Array)\\n#39 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Generator.php(172): Knuckles\\\\Scribe\\\\Extracting\\\\Generator->iterateThroughStrategies('responses', Array, Array)\\n#40 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Extracting\\\/Generator.php(127): Knuckles\\\\Scribe\\\\Extracting\\\\Generator->fetchResponses(Object(ReflectionClass), Object(ReflectionMethod), Object(Illuminate\\\\Routing\\\\Route), Array, Array)\\n#41 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Commands\\\/GenerateDocumentation.php(119): Knuckles\\\\Scribe\\\\Extracting\\\\Generator->processRoute(Object(Illuminate\\\\Routing\\\\Route), Array)\\n#42 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/knuckleswtf\\\/scribe\\\/src\\\/Commands\\\/GenerateDocumentation.php(73): Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation->processRoutes(Array)\\n#43 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/BoundMethod.php(36): Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation->handle(Object(Knuckles\\\\Scribe\\\\Matching\\\\RouteMatcher))\\n#44 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/Util.php(37): Illuminate\\\\Container\\\\BoundMethod::Illuminate\\\\Container\\\\{closure}()\\n#45 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/BoundMethod.php(93): Illuminate\\\\Container\\\\Util::unwrapIfClosure(Object(Closure))\\n#46 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/BoundMethod.php(37): Illuminate\\\\Container\\\\BoundMethod::callBoundMethod(Object(Illuminate\\\\Foundation\\\\Application), Array, Object(Closure))\\n#47 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Container\\\/Container.php(596): Illuminate\\\\Container\\\\BoundMethod::call(Object(Illuminate\\\\Foundation\\\\Application), Array, Array, NULL)\\n#48 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Console\\\/Command.php(134): Illuminate\\\\Container\\\\Container->call(Array)\\n#49 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/symfony\\\/console\\\/Command\\\/Command.php(298): Illuminate\\\\Console\\\\Command->execute(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Illuminate\\\\Console\\\\OutputStyle))\\n#50 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Console\\\/Command.php(121): Symfony\\\\Component\\\\Console\\\\Command\\\\Command->run(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Illuminate\\\\Console\\\\OutputStyle))\\n#51 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/symfony\\\/console\\\/Application.php(1040): Illuminate\\\\Console\\\\Command->run(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#52 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/symfony\\\/console\\\/Application.php(301): Symfony\\\\Component\\\\Console\\\\Application->doRunCommand(Object(Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation), Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#53 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/symfony\\\/console\\\/Application.php(171): Symfony\\\\Component\\\\Console\\\\Application->doRun(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#54 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Console\\\/Application.php(93): Symfony\\\\Component\\\\Console\\\\Application->run(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#55 \\\/var\\\/www\\\/gmailWrapper\\\/vendor\\\/laravel\\\/framework\\\/src\\\/Illuminate\\\/Foundation\\\/Console\\\/Kernel.php(129): Illuminate\\\\Console\\\\Application->run(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#56 \\\/var\\\/www\\\/gmailWrapper\\\/artisan(37): Illuminate\\\\Foundation\\\\Console\\\\Kernel->handle(Object(Symfony\\\\Component\\\\Console\\\\Input\\\\ArgvInput), Object(Symfony\\\\Component\\\\Console\\\\Output\\\\ConsoleOutput))\\n#57 {main}\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/gmail\/login",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gmail\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/login"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "api\/gmail\/login Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/gmail\/login",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/gmail\/login"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/employees\/getChildNodes",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/employees\/getChildNodes",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/employees\/getChildNodes"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "api\/employees\/getChildNodes Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/employees\/getChildNodes",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/employees\/getChildNodes"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"statusCode\": \"TXN\",\n    \"status\": \"Child nodes fetched successfully.\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"All\",\n        \"children\": [\n            {\n                \"id\": 27,\n                \"name\": \"Mohd. Qasim\",\n                \"userId\": 33,\n                \"parentId\": 0,\n                \"children\": [\n                    {\n                        \"id\": 28,\n                        \"name\": \"Bokali Awomi\",\n                        \"userId\": 34,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 29,\n                        \"name\": \"Amit Kumar Tiwari\",\n                        \"userId\": 35,\n                        \"parentId\": 27,\n                        \"children\": [\n                            {\n                                \"id\": 34,\n                                \"name\": \"Ashraf Ray\",\n                                \"userId\": 40,\n                                \"parentId\": 29\n                            },\n                            {\n                                \"id\": 82,\n                                \"name\": \"Jatin Khanna\",\n                                \"userId\": 95,\n                                \"parentId\": 29\n                            },\n                            {\n                                \"id\": 160,\n                                \"name\": \"VIVEK TANWAR\",\n                                \"userId\": 173,\n                                \"parentId\": 29\n                            },\n                            {\n                                \"id\": 186,\n                                \"name\": \"Abhishek Soy\",\n                                \"userId\": 191,\n                                \"parentId\": 29\n                            },\n                            {\n                                \"id\": 191,\n                                \"name\": \"Manmohan Sharma\",\n                                \"userId\": 196,\n                                \"parentId\": 29\n                            },\n                            {\n                                \"id\": 193,\n                                \"name\": \"Mukul Thakur\",\n                                \"userId\": 202,\n                                \"parentId\": 29\n                            },\n                            {\n                                \"id\": 195,\n                                \"name\": \"Neeti Sharma\",\n                                \"userId\": 204,\n                                \"parentId\": 29\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 33,\n                        \"name\": \"Jai Kumar\",\n                        \"userId\": 39,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 37,\n                        \"name\": \"Saksham Mishra\",\n                        \"userId\": 43,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 39,\n                        \"name\": \"Hrithik Kohli\",\n                        \"userId\": 45,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 48,\n                        \"name\": \"Farhan Murtaza\",\n                        \"userId\": 54,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 69,\n                        \"name\": \"Akriti Srivastava\",\n                        \"userId\": 82,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 70,\n                        \"name\": \"Arjun Singh\",\n                        \"userId\": 83,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 157,\n                        \"name\": \"Parth Shukla\",\n                        \"userId\": 170,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 158,\n                        \"name\": \"Neeraj Kumar\",\n                        \"userId\": 171,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 164,\n                        \"name\": \"Gaurav\",\n                        \"userId\": 178,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 185,\n                        \"name\": \"Adarsh Jha\",\n                        \"userId\": 190,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 187,\n                        \"name\": \"Ujjwal Bhatt\",\n                        \"userId\": 192,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 190,\n                        \"name\": \"Anurag Sarkar\",\n                        \"userId\": 195,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 197,\n                        \"name\": \"Nisha Khan\",\n                        \"userId\": 206,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 210,\n                        \"name\": \"Sarthak Pandit\",\n                        \"userId\": 219,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 211,\n                        \"name\": \"Sarthak Tiwari\",\n                        \"userId\": 220,\n                        \"parentId\": 27\n                    },\n                    {\n                        \"id\": 214,\n                        \"name\": \"Bhagya Vatnani\",\n                        \"userId\": 223,\n                        \"parentId\": 27\n                    }\n                ]\n            },\n            {\n                \"id\": 30,\n                \"name\": \"Naman Mishra\",\n                \"userId\": 36,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 31,\n                \"name\": \"Mousumi Debbarma\",\n                \"userId\": 37,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 32,\n                \"name\": \"Craig Reilly\",\n                \"userId\": 38,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 50,\n                \"name\": \"Office(Rahul)\",\n                \"userId\": 62,\n                \"parentId\": 0,\n                \"children\": [\n                    {\n                        \"id\": 65,\n                        \"name\": \"Surat Sahni\",\n                        \"userId\": 78,\n                        \"parentId\": 50\n                    },\n                    {\n                        \"id\": 181,\n                        \"name\": \"Mohd Washim Khan\",\n                        \"userId\": 186,\n                        \"parentId\": 50\n                    },\n                    {\n                        \"id\": 189,\n                        \"name\": \"Kunwar Pal\",\n                        \"userId\": 194,\n                        \"parentId\": 50\n                    }\n                ]\n            },\n            {\n                \"id\": 63,\n                \"name\": \"Kausar Jahan Raza\",\n                \"userId\": 76,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 66,\n                \"name\": \"krishan arora\",\n                \"userId\": 79,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 67,\n                \"name\": \"sameeer\",\n                \"userId\": 80,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 68,\n                \"name\": \"nandini\",\n                \"userId\": 81,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 75,\n                \"name\": \"Mashhood Raza Azka\",\n                \"userId\": 88,\n                \"parentId\": 0,\n                \"children\": [\n                    {\n                        \"id\": 115,\n                        \"name\": \"Niharika Arora\",\n                        \"userId\": 128,\n                        \"parentId\": 75,\n                        \"children\": [\n                            {\n                                \"id\": 78,\n                                \"name\": \"Pankaj Kaushik\",\n                                \"userId\": 91,\n                                \"parentId\": 115\n                            },\n                            {\n                                \"id\": 134,\n                                \"name\": \"Nidhi Sood\",\n                                \"userId\": 147,\n                                \"parentId\": 115,\n                                \"children\": [\n                                    {\n                                        \"id\": 105,\n                                        \"name\": \"Priya Agarwal\",\n                                        \"userId\": 118,\n                                        \"parentId\": 134\n                                    },\n                                    {\n                                        \"id\": 112,\n                                        \"name\": \"Saurabh Sharma\",\n                                        \"userId\": 125,\n                                        \"parentId\": 134\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": 156,\n                                \"name\": \"Surbhi Shridhar\",\n                                \"userId\": 169,\n                                \"parentId\": 115,\n                                \"children\": [\n                                    {\n                                        \"id\": 114,\n                                        \"name\": \"Richa Mishra\",\n                                        \"userId\": 127,\n                                        \"parentId\": 156\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": 165,\n                                \"name\": \"Gargi Tomar\",\n                                \"userId\": 179,\n                                \"parentId\": 115\n                            }\n                        ]\n                    }\n                ]\n            },\n            {\n                \"id\": 77,\n                \"name\": \"Bina Das\",\n                \"userId\": 90,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 79,\n                \"name\": \"Shabnam\",\n                \"userId\": 92,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 80,\n                \"name\": \"Zoya Shabab\",\n                \"userId\": 93,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 85,\n                \"name\": \"Rohit Kishore\",\n                \"userId\": 98,\n                \"parentId\": 0,\n                \"children\": [\n                    {\n                        \"id\": 71,\n                        \"name\": \"Riffat Tabassum\",\n                        \"userId\": 84,\n                        \"parentId\": 85,\n                        \"children\": [\n                            {\n                                \"id\": 74,\n                                \"name\": \"Rahul Mandal\",\n                                \"userId\": 87,\n                                \"parentId\": 71,\n                                \"children\": [\n                                    {\n                                        \"id\": 108,\n                                        \"name\": \"kanhaiya\",\n                                        \"userId\": 121,\n                                        \"parentId\": 74\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": 113,\n                                \"name\": \"Ishika Goyal\",\n                                \"userId\": 126,\n                                \"parentId\": 71\n                            },\n                            {\n                                \"id\": 144,\n                                \"name\": \"Sakshi Verma\",\n                                \"userId\": 157,\n                                \"parentId\": 71\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 84,\n                        \"name\": \"Ravi Srivastava\",\n                        \"userId\": 97,\n                        \"parentId\": 85,\n                        \"children\": [\n                            {\n                                \"id\": 89,\n                                \"name\": \"MD Aznash Khan\",\n                                \"userId\": 102,\n                                \"parentId\": 84\n                            },\n                            {\n                                \"id\": 136,\n                                \"name\": \"Rishi Panwar\",\n                                \"userId\": 149,\n                                \"parentId\": 84\n                            },\n                            {\n                                \"id\": 138,\n                                \"name\": \"Jagdeep Singh\",\n                                \"userId\": 151,\n                                \"parentId\": 84,\n                                \"children\": [\n                                    {\n                                        \"id\": 110,\n                                        \"name\": \"Sonam Kumari\",\n                                        \"userId\": 123,\n                                        \"parentId\": 138\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": 140,\n                                \"name\": \"Vinay\",\n                                \"userId\": 153,\n                                \"parentId\": 84\n                            },\n                            {\n                                \"id\": 167,\n                                \"name\": \"ABHISHEK KUMAR\",\n                                \"userId\": 181,\n                                \"parentId\": 84\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 87,\n                        \"name\": \"Anurag Sarkar\",\n                        \"userId\": 100,\n                        \"parentId\": 85\n                    },\n                    {\n                        \"id\": 91,\n                        \"name\": \"Shashank Sharma\",\n                        \"userId\": 104,\n                        \"parentId\": 85\n                    },\n                    {\n                        \"id\": 103,\n                        \"name\": \"Mohammad Ikram\",\n                        \"userId\": 116,\n                        \"parentId\": 85\n                    },\n                    {\n                        \"id\": 131,\n                        \"name\": \"Rohit Saraswat\",\n                        \"userId\": 144,\n                        \"parentId\": 85,\n                        \"children\": [\n                            {\n                                \"id\": 153,\n                                \"name\": \"Shivam Pandey\",\n                                \"userId\": 166,\n                                \"parentId\": 131\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 135,\n                        \"name\": \"Rashmi Yadav\",\n                        \"userId\": 148,\n                        \"parentId\": 85,\n                        \"children\": [\n                            {\n                                \"id\": 90,\n                                \"name\": \"Gargi Gupta\",\n                                \"userId\": 103,\n                                \"parentId\": 135\n                            },\n                            {\n                                \"id\": 95,\n                                \"name\": \"Kapil Kumar Singh\",\n                                \"userId\": 108,\n                                \"parentId\": 135\n                            },\n                            {\n                                \"id\": 100,\n                                \"name\": \"Niraj Jitendra Sharma\",\n                                \"userId\": 113,\n                                \"parentId\": 135\n                            },\n                            {\n                                \"id\": 143,\n                                \"name\": \"Srishti Singh\",\n                                \"userId\": 156,\n                                \"parentId\": 135\n                            },\n                            {\n                                \"id\": 145,\n                                \"name\": \"Rashi Rajput\",\n                                \"userId\": 158,\n                                \"parentId\": 135\n                            },\n                            {\n                                \"id\": 148,\n                                \"name\": \"MD. Tarique Rehman\",\n                                \"userId\": 161,\n                                \"parentId\": 135\n                            },\n                            {\n                                \"id\": 151,\n                                \"name\": \"Mithul Nair\",\n                                \"userId\": 164,\n                                \"parentId\": 135\n                            },\n                            {\n                                \"id\": 169,\n                                \"name\": \"maanvi gupta\",\n                                \"userId\": 183,\n                                \"parentId\": 135\n                            },\n                            {\n                                \"id\": 170,\n                                \"name\": \"Priya Roy\",\n                                \"userId\": 184,\n                                \"parentId\": 135\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 147,\n                        \"name\": \"Sakshi Jain\",\n                        \"userId\": 160,\n                        \"parentId\": 85,\n                        \"children\": [\n                            {\n                                \"id\": 81,\n                                \"name\": \"Saba Zehra\",\n                                \"userId\": 94,\n                                \"parentId\": 147\n                            },\n                            {\n                                \"id\": 83,\n                                \"name\": \"Avinash Kumar\",\n                                \"userId\": 96,\n                                \"parentId\": 147\n                            },\n                            {\n                                \"id\": 88,\n                                \"name\": \"Bharat Kumar Dixit\",\n                                \"userId\": 101,\n                                \"parentId\": 147\n                            },\n                            {\n                                \"id\": 101,\n                                \"name\": \"Munmun Kumari\",\n                                \"userId\": 114,\n                                \"parentId\": 147\n                            },\n                            {\n                                \"id\": 102,\n                                \"name\": \"Parmeet Kaur\",\n                                \"userId\": 115,\n                                \"parentId\": 147\n                            },\n                            {\n                                \"id\": 104,\n                                \"name\": \"Lalit Upadhyay\",\n                                \"userId\": 117,\n                                \"parentId\": 147\n                            },\n                            {\n                                \"id\": 117,\n                                \"name\": \"Babar Javaid\",\n                                \"userId\": 130,\n                                \"parentId\": 147,\n                                \"children\": [\n                                    {\n                                        \"id\": 76,\n                                        \"name\": \"Samir Kumar\",\n                                        \"userId\": 89,\n                                        \"parentId\": 117\n                                    },\n                                    {\n                                        \"id\": 97,\n                                        \"name\": \"Aftab Hussain\",\n                                        \"userId\": 110,\n                                        \"parentId\": 117,\n                                        \"children\": [\n                                            {\n                                                \"id\": 111,\n                                                \"name\": \"Amit Kumar Baranwal\",\n                                                \"userId\": 124,\n                                                \"parentId\": 97\n                                            },\n                                            {\n                                                \"id\": 168,\n                                                \"name\": \"Nakul\",\n                                                \"userId\": 182,\n                                                \"parentId\": 97\n                                            }\n                                        ]\n                                    },\n                                    {\n                                        \"id\": 98,\n                                        \"name\": \"Mohammad Adnan\",\n                                        \"userId\": 111,\n                                        \"parentId\": 117\n                                    },\n                                    {\n                                        \"id\": 99,\n                                        \"name\": \"Arif Zamal Siddiqui\",\n                                        \"userId\": 112,\n                                        \"parentId\": 117\n                                    },\n                                    {\n                                        \"id\": 130,\n                                        \"name\": \"Inderkant\",\n                                        \"userId\": 143,\n                                        \"parentId\": 117\n                                    },\n                                    {\n                                        \"id\": 133,\n                                        \"name\": \"Himanshu Sharma\",\n                                        \"userId\": 146,\n                                        \"parentId\": 117,\n                                        \"children\": [\n                                            {\n                                                \"id\": 92,\n                                                \"name\": \"Sakshi Rastogi\",\n                                                \"userId\": 105,\n                                                \"parentId\": 133\n                                            },\n                                            {\n                                                \"id\": 96,\n                                                \"name\": \"Anuj Kumar\",\n                                                \"userId\": 109,\n                                                \"parentId\": 133\n                                            }\n                                        ]\n                                    },\n                                    {\n                                        \"id\": 141,\n                                        \"name\": \"Navdeep\",\n                                        \"userId\": 154,\n                                        \"parentId\": 117\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": 132,\n                                \"name\": \"Sudhir Kumar\",\n                                \"userId\": 145,\n                                \"parentId\": 147,\n                                \"children\": [\n                                    {\n                                        \"id\": 109,\n                                        \"name\": \"Brijesh Kannaujiya\",\n                                        \"userId\": 122,\n                                        \"parentId\": 132\n                                    },\n                                    {\n                                        \"id\": 123,\n                                        \"name\": \"Priyanka Singh\",\n                                        \"userId\": 136,\n                                        \"parentId\": 132\n                                    },\n                                    {\n                                        \"id\": 125,\n                                        \"name\": \"Alamdeen Siddiqui\",\n                                        \"userId\": 138,\n                                        \"parentId\": 132\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": 161,\n                                \"name\": \"Prashant Sharma\",\n                                \"userId\": 174,\n                                \"parentId\": 147,\n                                \"children\": [\n                                    {\n                                        \"id\": 106,\n                                        \"name\": \"Sarandeep Kaur\",\n                                        \"userId\": 119,\n                                        \"parentId\": 161\n                                    },\n                                    {\n                                        \"id\": 139,\n                                        \"name\": \"Malik Shuaib\",\n                                        \"userId\": 152,\n                                        \"parentId\": 161\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": 162,\n                                \"name\": \"Pranav Kumar Mishra\",\n                                \"userId\": 176,\n                                \"parentId\": 147\n                            },\n                            {\n                                \"id\": 194,\n                                \"name\": \"Abdullah Riaz\",\n                                \"userId\": 203,\n                                \"parentId\": 147,\n                                \"children\": [\n                                    {\n                                        \"id\": 150,\n                                        \"name\": \"Sunny\",\n                                        \"userId\": 163,\n                                        \"parentId\": 194\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 155,\n                        \"name\": \"Neha bakshi\",\n                        \"userId\": 168,\n                        \"parentId\": 85\n                    },\n                    {\n                        \"id\": 166,\n                        \"name\": \"Suvajit Banerjee\",\n                        \"userId\": 180,\n                        \"parentId\": 85\n                    }\n                ]\n            },\n            {\n                \"id\": 86,\n                \"name\": \"Dummy13\",\n                \"userId\": 99,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 93,\n                \"name\": \"Prashant Kumar Upadhyay\",\n                \"userId\": 106,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 94,\n                \"name\": \"Rohit Singh\",\n                \"userId\": 107,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 107,\n                \"name\": \"Agrika Dixit\",\n                \"userId\": 120,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 116,\n                \"name\": \"Dummy43\",\n                \"userId\": 129,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 118,\n                \"name\": \"Dummy45\",\n                \"userId\": 131,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 119,\n                \"name\": \"Noor Saba\",\n                \"userId\": 132,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 120,\n                \"name\": \"Dishani Dcosta Mandal\",\n                \"userId\": 133,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 121,\n                \"name\": \"Nida Zehra\",\n                \"userId\": 134,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 122,\n                \"name\": \"Saddam Hussain\",\n                \"userId\": 135,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 124,\n                \"name\": \"Mohan\",\n                \"userId\": 137,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 126,\n                \"name\": \"Akansha Chaterji\",\n                \"userId\": 139,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 127,\n                \"name\": \"Uma Maheshwari\",\n                \"userId\": 140,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 128,\n                \"name\": \"Dummy55\",\n                \"userId\": 141,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 129,\n                \"name\": \"Dummy 56\",\n                \"userId\": 142,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 137,\n                \"name\": \"Ankita Gupta\",\n                \"userId\": 150,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 142,\n                \"name\": \"Dummy 69\",\n                \"userId\": 155,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 146,\n                \"name\": \"Dummy 73\",\n                \"userId\": 159,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 149,\n                \"name\": \"Aman Singh Negi\",\n                \"userId\": 162,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 152,\n                \"name\": \"Kanhiya\",\n                \"userId\": 165,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 154,\n                \"name\": \"Sanobar ismail\",\n                \"userId\": 167,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 159,\n                \"name\": \"DEV CHAUHAN\",\n                \"userId\": 172,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 163,\n                \"name\": \"Mohd Aamir\",\n                \"userId\": 177,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 180,\n                \"name\": \"Amir Azam Khan\",\n                \"userId\": 185,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 182,\n                \"name\": \"Akanksha\",\n                \"userId\": 187,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 183,\n                \"name\": \"Khumja Debbarma\",\n                \"userId\": 188,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 184,\n                \"name\": \"Niraj Jintendra Sharma\",\n                \"userId\": 189,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 188,\n                \"name\": \"Priyanshu Saspal\",\n                \"userId\": 193,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 192,\n                \"name\": \"Amit Kumar\",\n                \"userId\": 197,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 196,\n                \"name\": \"Shivam Srivastava\",\n                \"userId\": 205,\n                \"parentId\": 0,\n                \"children\": [\n                    {\n                        \"id\": 199,\n                        \"name\": \"Ayush Mehta\",\n                        \"userId\": 208,\n                        \"parentId\": 196,\n                        \"children\": [\n                            {\n                                \"id\": 207,\n                                \"name\": \"Shruti Basu\",\n                                \"userId\": 216,\n                                \"parentId\": 199\n                            },\n                            {\n                                \"id\": 209,\n                                \"name\": \"Yogesh Rawat\",\n                                \"userId\": 218,\n                                \"parentId\": 199\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 201,\n                        \"name\": \"Kartik Kamra\",\n                        \"userId\": 210,\n                        \"parentId\": 196,\n                        \"children\": [\n                            {\n                                \"id\": 204,\n                                \"name\": \"Riya Panwar\",\n                                \"userId\": 213,\n                                \"parentId\": 201\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 202,\n                        \"name\": \"Mandip Singh\",\n                        \"userId\": 211,\n                        \"parentId\": 196\n                    },\n                    {\n                        \"id\": 203,\n                        \"name\": \"Rahul Panwar\",\n                        \"userId\": 212,\n                        \"parentId\": 196\n                    },\n                    {\n                        \"id\": 208,\n                        \"name\": \"Ujjwal Chawla\",\n                        \"userId\": 217,\n                        \"parentId\": 196,\n                        \"children\": [\n                            {\n                                \"id\": 198,\n                                \"name\": \"Chaitanya Mitra\",\n                                \"userId\": 207,\n                                \"parentId\": 208\n                            },\n                            {\n                                \"id\": 200,\n                                \"name\": \"Kanishk Sharma\",\n                                \"userId\": 209,\n                                \"parentId\": 208\n                            },\n                            {\n                                \"id\": 205,\n                                \"name\": \"Sarthak Kamra\",\n                                \"userId\": 214,\n                                \"parentId\": 208\n                            },\n                            {\n                                \"id\": 206,\n                                \"name\": \"Shreya Sharma\",\n                                \"userId\": 215,\n                                \"parentId\": 208\n                            },\n                            {\n                                \"id\": 212,\n                                \"name\": \"Saksham Chawla\",\n                                \"userId\": 221,\n                                \"parentId\": 208\n                            },\n                            {\n                                \"id\": 213,\n                                \"name\": \"Shikhar Saxena\",\n                                \"userId\": 222,\n                                \"parentId\": 208\n                            }\n                        ]\n                    }\n                ]\n            },\n            {\n                \"id\": 215,\n                \"name\": \"Jaffar Shad\",\n                \"userId\": 226,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 216,\n                \"name\": \"Amjad Khan\",\n                \"userId\": 227,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 217,\n                \"name\": \"Shubhika\",\n                \"userId\": 228,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 218,\n                \"name\": \"Srishti Maurya\",\n                \"userId\": 229,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 219,\n                \"name\": \"Pratyush Praveen\",\n                \"userId\": 230,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 220,\n                \"name\": \"Anam Suhail\",\n                \"userId\": 231,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 221,\n                \"name\": \"test name\",\n                \"userId\": 233,\n                \"parentId\": 0\n            },\n            {\n                \"id\": 222,\n                \"name\": \"Amit Rajput\",\n                \"userId\": 234,\n                \"parentId\": 0\n            }\n        ]\n    }\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/employees\/getParentNodes",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/employees\/getParentNodes",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/employees\/getParentNodes"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "api\/employees\/getParentNodes Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/employees\/getParentNodes",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/employees\/getParentNodes"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"statusCode\": \"ERR\",\n    \"status\": \"User not found or not a valid user.\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/employees\/calculateCtc",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/employees\/calculateCtc",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/employees\/calculateCtc"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "api\/employees\/calculateCtc Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/employees\/calculateCtc",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/employees\/calculateCtc"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"statusCode\": \"TXN\",\n    \"status\": \"CTC calculated successfully.\",\n    \"data\": {\n        \"annualCtc\": 0,\n        \"monthlyCtc\": 19060,\n        \"basic\": 9530,\n        \"hra\": 0,\n        \"lta\": 0,\n        \"ma\": 0,\n        \"epf\": 1143.6,\n        \"esi1\": 546.69,\n        \"adminCharges\": 95.3,\n        \"foodCoupon\": 1000,\n        \"otherAllowances\": 7291.1,\n        \"grossSalary\": 16821.1,\n        \"pf\": 0,\n        \"esi2\": 0,\n        \"healthInsurance\": 281,\n        \"costToCompany\": 19060,\n        \"netSalary\": 16540.1\n    }\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

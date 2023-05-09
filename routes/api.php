@@ -22,8 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // gmail api
 Route::prefix('gmail')->group(function () {
-    Route::any('reply', [GmailController::class, 'reply']);
-    Route::any('send', [GmailController::class, 'send']);
+    Route::get('reply', [GmailController::class, 'reply']);
+    Route::get('send', [GmailController::class, 'send']);
     Route::any('allInboxEmails', [GmailController::class, 'allInboxEmails']);
     Route::get('logout', [GmailController::class, 'logout']);
     Route::get('login', [GmailController::class, 'login']);
@@ -32,3 +32,6 @@ Route::prefix('gmail')->group(function () {
 Route::any('/employees/getChildNodes', [SibController::class, 'getChildNodes']);
 Route::any('/employees/getParentNodes', [SibController::class, 'getParentNodes']);
 Route::any('employees/calculateCtc', [SibController::class, 'calculateCtc']);
+
+// Route::view('/docs', 'scribe.index')->name('scribe');
+// Route::view('/admin/docs', 'scribe_admin.index')->name('scribe-admin');
