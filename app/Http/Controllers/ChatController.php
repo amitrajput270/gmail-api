@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Chat;
+use App\User;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
@@ -20,7 +20,10 @@ class ChatController extends Controller
             $query->where('sender_id', auth()->id())->where('receiver_id', $id);
         })->orWhere(function ($query) use ($id) {
             $query->where('sender_id', $id)->where('receiver_id', auth()->id());
-        })->get();
+        })
+            ->orderBy('created_at', 'ASC')
+            ->get();
+        // dd($messages->toArray());
         return view('chat.messages', compact('messages'))->with('senderId', $id);
     }
 
@@ -28,14 +31,14 @@ class ChatController extends Controller
     {
         $request->validate([
             'message' => 'required',
-            'receiver_id' => 'nullable'
+            'receiver_id' => 'nullable',
         ]);
         // dd($request->all());
 
         Chat::create([
             'sender_id' => auth()->id(),
             'receiver_id' => $request->receiver_id,
-            'message' => $request->message
+            'message' => $request->message,
         ]);
 
         return redirect()->back();

@@ -1,17 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\GmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\GmailController;
-use App\Http\Controllers\CommentController;
 use Dacastro4\LaravelGmail\Facade\LaravelGmail;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 Auth::routes();
 
@@ -23,16 +22,16 @@ Route::prefix('gmail')->group(function () {
     Route::any('allInboxEmails', [GmailController::class, 'allInboxEmails']);
 });
 
-Route::get('chat', [ChatController::class,'index'])->name('chat');
-Route::get('message/{id}', [ChatController::class,'getMessage'])->name('message');
-Route::post('message', [ChatController::class,'sendMessage'])->name('send.message');
+Route::get('chat', [ChatController::class, 'index'])->name('chat');
+Route::get('message/{id}', [ChatController::class, 'getMessage'])->name('message');
+Route::post('message', [ChatController::class, 'sendMessage'])->name('send.message');
 
-Route::get('post', [PostController::class,'create'])->name('post.create');
-Route::post('post', [PostController::class,'store'])->name('post.store');
-Route::get('posts', [PostController::class,'index'])->name('posts');
-Route::get('article/{post:slug}', [PostController::class,'show'])->name('post.show');
-Route::post('comment/store', [CommentController::class,'store'])->name('comment.add');
-Route::post('reply/store', [CommentController::class,'replyStore'])->name('reply.add');
+Route::get('post', [PostController::class, 'create'])->name('post.create');
+Route::post('post', [PostController::class, 'store'])->name('post.store');
+Route::get('posts', [PostController::class, 'index'])->name('posts');
+Route::get('article/{post:slug}', [PostController::class, 'show'])->name('post.show');
+Route::post('comment/store', [CommentController::class, 'store'])->name('comment.add');
+Route::post('reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -60,7 +59,3 @@ Route::get('oauth/gmail/logout', function () {
     }
     return redirect()->to('/');
 });
-
-
-
-
