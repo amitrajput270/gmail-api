@@ -20,6 +20,9 @@
                             <input type="text" name="title" class="form-control" required/>
                         </div>
                         <div class="form-group">
+                           <textarea name="body" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
                             <input type="submit" class="btn btn-success" value="Create post"/>
                         </div>
                     </form>
@@ -28,4 +31,8 @@
         </div>
     </div>
 </div>
+
+<script>
+    CKEDITOR.replace( 'body' );
+</script>
 @endsection

@@ -109,104 +109,12 @@ class SibController extends Controller
 
     public function calculateCtc()
     {
-        $annualCtc = request('ctcamount');
-        $monthlyCtc = $annualCtc / 12;
-        $basic = $monthlyCtc * 0.5; // 50% of monthly ctc
-        $hra = $basic * 0.4; // 40% of basic
-        $lta = $basic * 0.2; // 20% of basic
-        $ma = $basic * 0.2; // 20% of basic
-        $foodCoupon = 1000; // 1000 per month
-        if (request('foodCoupon') && request('foodCoupon') >= 500 && request('foodCoupon') <= 1000) {
-            $foodCoupon = request('foodCoupon');
-        }
-        $healthInsurance = 281; // 281 per month
-        $healthInsuranceMembers = request('healthInsuranceMembers') && request('healthInsuranceMembers') > 1 ? request('healthInsuranceMembers') : 1;
-        $healthInsurance = $healthInsurance * $healthInsuranceMembers;
-        $esi1 = 0;
-        $esi2 = 0;
-        if ((int) $basic <= 9530) {
-            // $annualCtc = 9530 * 12;
-            $monthlyCtc = 9530 * 2;
-            $basic = 9530;
-            $hra = 0;
-            $lta = 0;
-            $ma = 0;
-            $epf = $basic * 0.12; // 12% of basic
-            $adminCharges = $basic * 0.01; // 1% of basic
-            $otherAllowances = $monthlyCtc - ($basic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
-            $grossSalary = $basic + $hra + $lta + $ma + $otherAllowances;
-            // Deductions
-            $pf = 0;
-            $esi1 = $grossSalary * 0.0325; // 1.75% of gross salary
-        } elseif ((int) $annualCtc <= 291225) {
-            $monthlyCtc = $annualCtc / 12;
-            $basic = $monthlyCtc * 0.5; // 50% of monthly ctc
-            $hra = $basic * 0.4; // 40% of basic
-            $lta = $basic * 0.2; // 20% of basic
-            $ma = 0;
-            $epf = $basic * 0.12; // 12% of basic
-            $adminCharges = $basic * 0.01; // 1% of basic
-            $otherAllowances = $monthlyCtc - ($basic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
-            $grossSalary = $basic + $hra + $lta + $ma + $otherAllowances;
-            $healthInsurance = 0;
-            if ((int) $grossSalary < 21000) {
-                $esi1 = $grossSalary * 0.0325; // 3.25% of gross salary
-                $esi2 = $grossSalary * 0.0075; // 0.75% of gross salary
-            } else {
-                $esi1 = 0;
-                $esi2 = 0;
-            }
-            // Deductions
-            $pf = $basic * 0.12; // 12% of basic
-        } elseif (request('salaryRule') == 'fixed') {
-            $changeBasic = 15000;
-            $epf = $changeBasic * 0.12; // 12% of basic
-            $adminCharges = $changeBasic * 0.01; // 1% of basic
-            $otherAllowances = $monthlyCtc - ($changeBasic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
-            $grossSalary = $changeBasic + $hra + $lta + $ma + $otherAllowances;
-            // Deductions
-            $pf = $changeBasic * 0.12; // 12% of basic
-        } elseif (request('salaryRule') == 'basic') {
-            $epf = $basic * 0.12; // 12% of basic
-            $adminCharges = $basic * 0.01; // 1% of basic
-            $otherAllowances = $monthlyCtc - ($basic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
-            $grossSalary = $basic + $hra + $lta + $ma + $otherAllowances;
-            // Deductions
-            $pf = $basic * 0.12; // 12% of basic
-        } elseif (request('salaryRule') == 'nopf') {
-            $epf = 0;
-            $adminCharges = 0;
-            $otherAllowances = $monthlyCtc - ($basic + $hra + $lta + $ma + $epf + $adminCharges + $foodCoupon);
-            $grossSalary = $basic + $hra + $lta + $ma + $otherAllowances;
-            // Deductions
-            $pf = 0;
-        }
-        $costToCompany = $grossSalary + $epf + $adminCharges + $foodCoupon;
-        $netSalary = $grossSalary - ($pf + $healthInsurance);
-        $totalDeductions = $pf + $healthInsurance + $esi1 + $esi2;
-        return response()->json([
-            'statusCode' => 'TXN',
-            'status' => 'CTC calculated successfully.',
-            'data' => [
-                'annualCtc' => round($annualCtc, 2),
-                'monthlyCtc' => round($monthlyCtc, 2),
-                'basic' => round($basic, 2),
-                'hra' => round($hra, 2),
-                'lta' => round($lta, 2),
-                'ma' => round($ma, 2),
-                'epf' => round($epf, 2),
-                'esi1' => round($esi1, 2),
-                'adminCharges' => round($adminCharges, 2),
-                'foodCoupon' => round($foodCoupon, 2),
-                'otherAllowances' => round($otherAllowances, 2),
-                'grossSalary' => round($grossSalary, 2),
-                'pf' => round($pf, 2),
-                'esi2' => round($esi2, 2),
-                'healthInsurance' => round($healthInsurance, 2),
-                'costToCompany' => round($costToCompany, 2),
-                // 'totalDeductions' => round($totalDeductions,2),
-                'netSalary' => round($netSalary, 2),
-            ],
-        ]);
+        $url = 'http://hrms.localhost/api/getCtcApi';
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, request()->all());
+        $response = curl_exec($curl);
+        curl_close($curl);
+        return response()->json(json_decode($response, true));
     }
 }
